@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal Terminal - Lorenz Turner</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    width: 100%;
+}
+.terminal {
+    position: relative;
+    width: 100%;
+    max-width: 1672px;
+    margin: 0 auto;
+    line-height: 0;
+}
+#terminalScreen {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+}
+.folder-button {
+    position: absolute;
+    left: 2.45%;
+    width: 20.75%;
+    height: 15.15%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+}
+.folder-button:focus {
+    outline: none;
+}
+.personal { top: 23.55%; }
+.shared   { top: 41.05%; }
+.audio    { top: 57.55%; }
+.utility  { top: 75.05%; }
+</style>
+</head>
+<body>
+<div class="terminal">
+    <img id="terminalScreen"
+         src="https://gun-o.github.io/Images/LZ_test.png"
+
+    <button class="folder-button personal"
+            onclick="switchFolder('personal')"></button>
+
+    <button class="folder-button shared"
+            onclick="switchFolder('shared')"></button>
+
+    <button class="folder-button audio"
+            onclick="switchFolder('audio')"></button>
+
+    <button class="folder-button utility"
+            onclick="switchFolder('utility')"></button>
+</div>
+
+<script>
+const folders = {
+    personal: "https://gun-o.github.io/Images/LZ_Post1.png",
+    shared:   "https://gun-o.github.io/Images/LZ_Post2.png",
+    audio:    "https://gun-o.github.io/Images/LZ_Post3.png",
+    utility:  "https://gun-o.github.io/Images/LZ_Post4.png"
+};
+
+function switchFolder(folder) {
+    const screen = document.getElementById("terminalScreen");
+    if (folders[folder]) {
+        screen.src = folders[folder];
+    }
+}
+
+Object.values(folders).forEach(function(url) {
+    const img = new Image();
+    img.src = url;
+});
+</script>
+</body>
+</html>
